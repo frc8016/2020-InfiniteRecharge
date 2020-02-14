@@ -32,12 +32,37 @@ public final class Constants {
 	
 	public final class OiConstants{
 		public static final int kDriverJoystickPort = 0;
+		public static final int kOperatorControllerPort = 1;
 
 	}
 
 	public final class PneumaticsConstants{
 		public static final int kIntakeSolenoidPort1 = 0;
 		public static final int kIntakeSolenoidPort2 = 1;
+	}
+
+	public final class XboxConstants{
+		public static final int kLeftAxisX = 0;
+		public static final int kLeftAxisY = 1;
+		public static final int kRightAxisX = 4;
+		public static final int kRightAxisY = 5;
+
+		public static final int kTriggerLeft = 2;
+		public static final int kTriggerRight = 3;
+
+		public static final int kButtonLeft = 4;
+		public static final int kButtonRight = 5;
+
+		public static final int kButtonA = 0;
+		public static final int kButtonB = 1;
+		public static final int kButtonX = 2;
+		public static final int kButtonY = 3;
+
+		public static final int kButtonBack = 6;
+		public static final int kButtonMenu = 7;
+
+		public static final int kButtonStickLeft = 8;
+		public static final int kButtonStickRight = 9;
 	}
 }
 

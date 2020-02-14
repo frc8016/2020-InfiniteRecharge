@@ -11,8 +11,10 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.Constants.OiConstants;
+import frc.robot.Constants.XboxConstants;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Intake;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
@@ -29,7 +31,10 @@ public class RobotContainer {
   private final Intake m_Intake = new Intake();
 
   private final Joystick m_driveStick = new Joystick(OiConstants.kDriverJoystickPort);
-  private final JoystickButton 
+  private final XboxController m_operatorController = new XboxController(OiConstants.kOperatorControllerPort);
+  private final JoystickButton m_ExtendIntakeButton = new JoystickButton(m_operatorController, XboxConstants.kButtonX);
+  private final JoystickButton m_RetractIntakeButton = new JoystickButton(m_operatorController, XboxConstants.kButtonA);
+  private final JoystickButton m_ClearIntakeJamButton = new JoystickButton(m_operatorController, XboxConstants.kButtonY);
 
   
 
@@ -47,9 +52,22 @@ public class RobotContainer {
         
       )
     );
+  
+   m_ExtendIntakeButton.whenPressed(
+    new InstantCommand(m_Intake::extendIntake, m_Intake).andThen(
+    new RunCommand(m_Intake::runIntakeMotorsForward, m_Intake))
+   );
+
+   m_RetractIntakeButton.whenPressed(
+     new InstantCommand(m_Intake::retractIntake, m_Intake).andThen(
+     new InstantCommand(m_Intake::runIntakeMotorsOff))
+   );
+
+   m_ClearIntakeJamButton.whenPressed(
+     new RunCommand(m_Intake::runIntakeMotorsBackwards)
+   );
+
   }
-
-
   /**
    * Use this method to define your button->command mappings.  Buttons can be created by
    * instantiating a {@link GenericHID} or one of its subclasses ({@link
