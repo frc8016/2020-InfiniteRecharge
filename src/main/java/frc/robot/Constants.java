@@ -19,6 +19,7 @@ public final class Constants {
 
 	public final class ValueConstants{
 		public static final double kIntakeMotorSpeedScalar = .5;
+		public static final double kCageSpeedScalar = .5;
 	}
 	public final class MotorConstants{
 
@@ -27,6 +28,10 @@ public final class Constants {
 		public static final int kRightMotor1Port = 2;
 		public static final int kRightMotor2Port = 3;
 		public static final int kIntakeMotorPort = 0;
+		public static final int kCageUpperMotor1Port = 1;
+		public static final int kCageUpperMotor2Port = 0;
+		public static final int kCageLowerMotor1Port = 0;
+		public static final int kCageLowerMotor2Port = 0;
         
 	}
 	

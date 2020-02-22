@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.Constants.OiConstants;
 import frc.robot.Constants.XboxConstants;
+import frc.robot.subsystems.Cage;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Intake;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
@@ -29,16 +30,15 @@ public class RobotContainer {
 
   private final DriveTrain m_driveTrain = new DriveTrain();
   private final Intake m_Intake = new Intake();
+  private final Cage m_Cage = new Cage();
 
   private final Joystick m_driveStick = new Joystick(OiConstants.kDriverJoystickPort);
   private final XboxController m_operatorController = new XboxController(OiConstants.kOperatorControllerPort);
   private final JoystickButton m_ExtendIntakeButton = new JoystickButton(m_operatorController, XboxConstants.kButtonX);
   private final JoystickButton m_RetractIntakeButton = new JoystickButton(m_operatorController, XboxConstants.kButtonA);
   private final JoystickButton m_ClearIntakeJamButton = new JoystickButton(m_operatorController, XboxConstants.kButtonY);
-
-  
-
-
+  private final JoystickButton m_RunCageUpwardsButton = new JoystickButton(m_operatorController, XboxConstants.kButtonRight);
+  private final JoystickButton m_RunCageDownwardsButton = new JoystickButton(m_operatorController, XboxConstants.kButtonLeft);
 
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
@@ -66,6 +66,14 @@ public class RobotContainer {
    m_ClearIntakeJamButton.whenPressed(
      new RunCommand(m_Intake::runIntakeMotorsBackwards)
    );
+
+   m_RunCageUpwardsButton.whenHeld(
+     new RunCommand(m_Cage::RunCageUpwards)
+   );
+
+   m_RunCageDownwardsButton.whenHeld(
+    new RunCommand(m_Cage::RunCageDownwards)
+  );
 
   }
   /**
