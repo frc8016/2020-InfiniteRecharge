@@ -16,14 +16,53 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-    public final class DriveConstants{
 
-		public static final int leftMotor1Port = 0;
-		public static final int leftMotor2Port = 1;
-		public static final int rightMotor1Port = 2;
-		public static final int rightMotor2Port = 3;
-		public static final int kDriverJoystickPort = 0;
+	public final class ValueConstants{
+		public static final double kIntakeMotorSpeedScalar = .5;
+	}
+	public final class MotorConstants{
+
+		public static final int kLeftMotor1Port = 0;
+		public static final int kLeftMotor2Port = 1;
+		public static final int kRightMotor1Port = 2;
+		public static final int kRightMotor2Port = 3;
+		public static final int kIntakeMotorPort = 0;
         
-    }
+	}
+	
+	public final class OiConstants{
+		public static final int kDriverJoystickPort = 0;
+		public static final int kOperatorControllerPort = 1;
+
+	}
+
+	public final class PneumaticsConstants{
+		public static final int kIntakeSolenoidPort1 = 0;
+		public static final int kIntakeSolenoidPort2 = 1;
+	}
+
+	public final class XboxConstants{
+		public static final int kLeftAxisX = 0;
+		public static final int kLeftAxisY = 1;
+		public static final int kRightAxisX = 4;
+		public static final int kRightAxisY = 5;
+
+		public static final int kTriggerLeft = 2;
+		public static final int kTriggerRight = 3;
+
+		public static final int kButtonLeft = 4;
+		public static final int kButtonRight = 5;
+
+		public static final int kButtonA = 0;
+		public static final int kButtonB = 1;
+		public static final int kButtonX = 2;
+		public static final int kButtonY = 3;
+
+		public static final int kButtonBack = 6;
+		public static final int kButtonMenu = 7;
+
+		public static final int kButtonStickLeft = 8;
+		public static final int kButtonStickRight = 9;
+	}
 }
 
