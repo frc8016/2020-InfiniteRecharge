@@ -7,8 +7,9 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -17,9 +18,9 @@ import frc.robot.Constants.MotorConstants;
 public class DriveTrain extends SubsystemBase {
 
   private final SpeedControllerGroup m_leftMotors = new SpeedControllerGroup(
-      new PWMVictorSPX(MotorConstants.kLeftMotor1Port), new PWMVictorSPX(MotorConstants.kLeftMotor2Port));
+      new WPI_VictorSPX(MotorConstants.kLeftMotor1Port), new WPI_VictorSPX(MotorConstants.kLeftMotor2Port));
 
-  private final SpeedControllerGroup m_rightMotors = new SpeedControllerGroup(new PWMVictorSPX(MotorConstants.kRightMotor1Port), new PWMVictorSPX(MotorConstants.kRightMotor2Port));
+  private final SpeedControllerGroup m_rightMotors = new SpeedControllerGroup(new WPI_VictorSPX(MotorConstants.kRightMotor1Port), new WPI_VictorSPX(MotorConstants.kRightMotor2Port));
 
   private final DifferentialDrive m_drive = new DifferentialDrive(m_leftMotors, m_rightMotors);
 

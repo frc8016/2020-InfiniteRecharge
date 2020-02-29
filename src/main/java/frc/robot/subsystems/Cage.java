@@ -7,10 +7,13 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.MotorConstants;
+import frc.robot.Constants.PneumaticsConstants;
 import frc.robot.Constants.ValueConstants;
 
 public class Cage extends SubsystemBase {
@@ -24,6 +27,33 @@ public class Cage extends SubsystemBase {
   private SpeedControllerGroup m_LowerMotors = new SpeedControllerGroup(m_LowerMotor1, m_LowerMotor2);
 
   private SpeedControllerGroup m_CageMotors = new SpeedControllerGroup(m_UpperMotors, m_LowerMotors);
+
+  
+  private final Spark m_IntakeMotor = new Spark(MotorConstants.kIntakeMotorPort);
+
+  private final DoubleSolenoid m_IntakeSolenoid = new DoubleSolenoid(PneumaticsConstants.kIntakeSolenoidPort1,
+      PneumaticsConstants.kIntakeSolenoidPort2);
+
+//Call these methods to set the motor direction for the intake
+  public void runIntakeMotorsForward() {
+    m_IntakeMotor.set(ValueConstants.kIntakeMotorSpeedScalar);
+  }
+  public void runIntakeMotorsBackwards() {
+    m_IntakeMotor.set(-ValueConstants.kIntakeMotorSpeedScalar);
+  }
+  public void runIntakeMotorsOff() {
+    m_IntakeMotor.set(0);
+  }
+
+
+//Use this to retract or extend the intake.
+  public void retractIntake() {
+    m_IntakeSolenoid.set(Value.kReverse);
+  }
+  public void extendIntake() {
+    m_IntakeSolenoid.set(Value.kForward);
+  }
+
 
 
   public void RunCageUpwards() {

@@ -14,7 +14,6 @@ import frc.robot.Constants.OiConstants;
 import frc.robot.Constants.XboxConstants;
 import frc.robot.subsystems.Cage;
 import frc.robot.subsystems.DriveTrain;
-import frc.robot.subsystems.Intake;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
@@ -29,7 +28,6 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
 
   private final DriveTrain m_driveTrain = new DriveTrain();
-  private final Intake m_Intake = new Intake();
   private final Cage m_Cage = new Cage();
 
   private final Joystick m_driveStick = new Joystick(OiConstants.kDriverJoystickPort);
@@ -54,17 +52,17 @@ public class RobotContainer {
     );
   
    m_ExtendIntakeButton.whenPressed(
-    new InstantCommand(m_Intake::extendIntake, m_Intake).andThen(
-    new RunCommand(m_Intake::runIntakeMotorsForward, m_Intake))
+    new InstantCommand(m_Cage::extendIntake, m_Cage).andThen(
+    new RunCommand(m_Cage::runIntakeMotorsForward, m_Cage))
    );
 
    m_RetractIntakeButton.whenPressed(
-     new InstantCommand(m_Intake::retractIntake, m_Intake).andThen(
-     new InstantCommand(m_Intake::runIntakeMotorsOff))
+     new InstantCommand(m_Cage::retractIntake, m_Cage).andThen(
+     new InstantCommand(m_Cage::runIntakeMotorsOff))
    );
 
    m_ClearIntakeJamButton.whenPressed(
-     new RunCommand(m_Intake::runIntakeMotorsBackwards)
+     new RunCommand(m_Cage::runIntakeMotorsBackwards)
    );
 
    m_RunCageUpwardsButton.whenHeld(

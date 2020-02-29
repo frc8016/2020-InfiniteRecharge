@@ -29,9 +29,9 @@ public final class Constants {
 		public static final int kRightMotor2Port = 3;
 		public static final int kIntakeMotorPort = 0;
 		public static final int kCageUpperMotor1Port = 1;
-		public static final int kCageUpperMotor2Port = 0;
-		public static final int kCageLowerMotor1Port = 0;
-		public static final int kCageLowerMotor2Port = 0;
+		public static final int kCageUpperMotor2Port = 2;
+		public static final int kCageLowerMotor1Port = 3;
+		public static final int kCageLowerMotor2Port = 4;
         
 	}
 	
@@ -58,16 +58,16 @@ public final class Constants {
 		public static final int kButtonLeft = 4;
 		public static final int kButtonRight = 5;
 
-		public static final int kButtonA = 0;
-		public static final int kButtonB = 1;
-		public static final int kButtonX = 2;
-		public static final int kButtonY = 3;
+		public static final int kButtonA = 1;
+		public static final int kButtonB = 2;
+		public static final int kButtonX = 3;
+		public static final int kButtonY = 4;
 
-		public static final int kButtonBack = 6;
-		public static final int kButtonMenu = 7;
+		public static final int kButtonBack = 7;
+		public static final int kButtonMenu = 8;
 
-		public static final int kButtonStickLeft = 8;
-		public static final int kButtonStickRight = 9;
+		public static final int kButtonStickLeft = 9;
+		public static final int kButtonStickRight = 10;
 	}
 }
 
