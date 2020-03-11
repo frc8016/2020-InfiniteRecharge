@@ -18,22 +18,20 @@ import frc.robot.Constants.ValueConstants;
 
 public class Cage extends SubsystemBase {
 
-  private Spark m_UpperMotor1 = new Spark(MotorConstants.kCageUpperMotor1Port);
-  private Spark m_UpperMotor2 = new Spark(MotorConstants.kCageUpperMotor2Port);
-  private Spark m_LowerMotor1 = new Spark(MotorConstants.kCageLowerMotor1Port);
-  private Spark m_LowerMotor2 = new Spark(MotorConstants.kCageLowerMotor2Port);
+  //Create Cage motors
+  private Spark m_UpperMotor = new Spark(MotorConstants.kCageUpperMotorPort);
+  private Spark m_LowerMotor = new Spark(MotorConstants.kCageLowerMotorPort);
 
-  private SpeedControllerGroup m_UpperMotors = new SpeedControllerGroup(m_UpperMotor1, m_UpperMotor2);
-  private SpeedControllerGroup m_LowerMotors = new SpeedControllerGroup(m_LowerMotor1, m_LowerMotor2);
+  private SpeedControllerGroup m_CageMotors = new SpeedControllerGroup(m_UpperMotor, m_LowerMotor);
 
-  private SpeedControllerGroup m_CageMotors = new SpeedControllerGroup(m_UpperMotors, m_LowerMotors);
-
-  
+  //Create Intake Motors and Solenoids
   private final Spark m_IntakeMotor = new Spark(MotorConstants.kIntakeMotorPort);
 
   private final DoubleSolenoid m_IntakeSolenoid = new DoubleSolenoid(PneumaticsConstants.kIntakeSolenoidPort1,
       PneumaticsConstants.kIntakeSolenoidPort2);
 
+  //Create Flap Solenoids
+  private final DoubleSolenoid m_FlapSolenoid = new DoubleSolenoid(PneumaticsConstants.kFlapSolenoidPort1, PneumaticsConstants.kFlapSolenoidPort2);
 //Call these methods to set the motor direction for the intake
   public void runIntakeMotorsForward() {
     m_IntakeMotor.set(ValueConstants.kIntakeMotorSpeedScalar);
@@ -49,25 +47,43 @@ public class Cage extends SubsystemBase {
 //Use this to retract or extend the intake.
   public void retractIntake() {
     m_IntakeSolenoid.set(Value.kReverse);
+    m_IntakeMotor.set(0);
   }
   public void extendIntake() {
     m_IntakeSolenoid.set(Value.kForward);
+    m_IntakeMotor.set(ValueConstants.kIntakeMotorSpeedScalar);
   }
 
 
 
-  public void RunCageUpwards() {
+  public void runCageUpwards() {
     m_CageMotors.set(ValueConstants.kCageSpeedScalar);
   }
 
-  public void RunCageDownwards() {
+  public void runCageDownwards() {
     m_CageMotors.set(-ValueConstants.kCageSpeedScalar);
+  }
+
+  public void turnCageOff() {
+    m_CageMotors.set(0.0);
+  }
+
+
+  public void raiseFlap() {
+    m_FlapSolenoid.set(Value.kForward);
+  }
+
+  public void lowerFlap() {
+    m_FlapSolenoid.set(Value.kReverse);
   }
 
   /**
    * Creates a new Cage.
    */
   public Cage() {
+    retractIntake();
+    turnCageOff();
+    lowerFlap();
 
   }
 
