@@ -12,7 +12,6 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.Constants.OiConstants;
 import frc.robot.Constants.XboxConstants;
-import frc.robot.commands.AutoAim;
 import frc.robot.subsystems.Cage;
 import frc.robot.subsystems.Climb;
 import frc.robot.subsystems.DriveTrain;
@@ -33,8 +32,6 @@ public class RobotContainer {
   private final DriveTrain m_driveTrain = new DriveTrain();
   private final Cage m_Cage = new Cage();
   private final Climb m_Climb = new Climb();
-
-  private final Command m_autoAim = new AutoAim(m_driveTrain);
 
   private final Joystick m_driveStick = new Joystick(OiConstants.kDriverJoystickPort);
   private final XboxController m_operatorController = new XboxController(OiConstants.kOperatorControllerPort);
@@ -123,6 +120,6 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    return m_autoAim;
+    return null;
   }
 }

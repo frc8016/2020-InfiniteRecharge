@@ -7,6 +7,8 @@
 
 package frc.robot;
 
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+
 import edu.wpi.first.wpilibj.kinematics.DifferentialDriveKinematics;
 
 /**
@@ -79,6 +81,7 @@ public final class Constants {
 			(ValueConstants.kWheelDiameterMeters * Math.PI) / (double) kEncoderCPR; //meters, tune to actual robot value
 
 		public static final boolean kGyroReversed = false;
+		public static final int kPigeonIMUPort = 5;
 
 	}
 	
