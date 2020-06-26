@@ -7,8 +7,6 @@
 
 package frc.robot;
 
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-
 import edu.wpi.first.wpilibj.kinematics.DifferentialDriveKinematics;
 
 /**
@@ -20,6 +18,15 @@ import edu.wpi.first.wpilibj.kinematics.DifferentialDriveKinematics;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+
+	//Check accuracy! All kinematics are measured in meters and radians
+	public final static class KinematicsConstants {
+		public static final Double[] allianceLoadingBayCoord = {-1.70, 8.00};
+		public static final Double[] alliancePowerPortCoord = {1.70, 8.00};
+
+		public static final Double[] opponentLoadingBayCoord = {1.70, -8.00};
+		public static final Double[] opponentPowerPortCoord = {-1.70, -8.00};
+	}
 
 	public final static class AutoConstants {
 		public static final double ksVolts = 0.22; // Tune to actual robot!
@@ -122,6 +129,11 @@ public final class Constants {
 
 		public static final int kButtonStickLeft = 9;
 		public static final int kButtonStickRight = 10;
+	}
+
+	public static final class NetworkTableConstants {
+		public static final double loadingBayPipelineIndex = 1;
+		public static final double powerPortPipelineIndex = 2;
 	}
 }
 
